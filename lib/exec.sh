@@ -13,4 +13,4 @@ else
     exit
 fi
 
-LD_LIBRARY_PATH=$libs java -Djava.library.path=$libs -jar $BASE_PATH/target/main-1.0.jar $2 $3
+LD_LIBRARY_PATH=$libs java $BASE_PATH/Main.java $2 $3
