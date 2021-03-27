@@ -13,8 +13,10 @@ jobs:
     name: docker
     runs-on: ubuntu-latest
     steps:
+      - name: docker/build
+        run: make build
       - name: docker/run
-        run: "docker run hacksore/hks 'list' '${{ github.event.inputs.client_id }}' > stamps.txt"
+        run: "docker run hacksore/hks:local 'list' '${{ github.event.inputs.client_id }}' > stamps.txt"
       - uses: actions/upload-artifact@v2
         with:
           name: stamps
