@@ -1,7 +1,5 @@
 #!/bin/bash
 
-libs="$BASE_PATH/lib/hyundai/x86_64"
-
 if [ "$1" = "hyundai" ]
 then
     libs="$BASE_PATH/lib/hyundai/x86_64"
