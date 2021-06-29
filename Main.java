@@ -21,7 +21,8 @@ public class RemoteHttpHeader {
 		String clientId = args[1];
 
 		if (command.equalsIgnoreCase("single")) {
-			String stamp = getStamp(clientId);
+			int unixTime = (int) (System.currentTimeMillis() / 1000L);
+			String stamp = getStamp(clientId + ":" + unixTime);
 			System.out.println(stamp);
 		}
 
