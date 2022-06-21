@@ -1,6 +1,6 @@
 import subprocess
 
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -8,13 +8,15 @@ app = Flask(__name__)
 @app.route("/hyundai/<app_id>")
 def hyundai(app_id):
     cmd = ["/bin/sh", "lib/exec.sh", "hyundai", "list", app_id]
-    return subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode("utf-8")
+    result = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode("utf-8")
+    return jsonify(result.split())
 
 
 @app.route("/kia/<app_id>")
 def kia(app_id):
     cmd = ["/bin/sh", "lib/exec.sh", "kia", "list", app_id]
-    return subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode("utf-8")
+    result = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode("utf-8")
+    return jsonify(result.split())
 
 
 if __name__ == "__main__":
